@@ -1,0 +1,69 @@
+<div style="height:100%!important">
+    <!-- <div> -->
+    <mat-toolbar color="primary" class="nav-bar">
+        <mat-toolbar-row *ngIf="!user">
+            <span class="spacer"></span>
+            <a mat-button routerLink="/register">Register</a>
+            <a mat-button routerLink="/">Login</a>
+        </mat-toolbar-row>
+        <!-- <span class="lable">Plot Owner Reconnect</span> -->
+        <mat-toolbar-row *ngIf="user">
+            <button mat-icon-button (click)="sidenav.toggle()" [disabled]="!user" fxShow="true" fxHide.gt-sm>
+                    <mat-icon>menu</mat-icon>
+                    <span class="example-spacer"></span>
+                </button>
+            <div fxShow="true" fxHide.lt-md fxFlex fxLayout fxLayoutAlign="flex-end" fxHide.xs fxLayoutGap="20px" class="navigation-items">
+                <div>
+                    <a [routerLink]="['/venture', user?.id]">
+                        <mat-icon class="icon" matTooltip="Home">home</mat-icon>
+                    </a>
+                </div>
+                <a routerLink="/ownerconnect">
+                    <mat-icon class="icon" matTooltip="Plot Link">link</mat-icon>
+                </a>
+                <a routerLink="members">
+                    <mat-icon class="icon" matTooltip="Members">person</mat-icon>
+                </a>
+                <a routerLink="members">
+                    <mat-icon class="icon" matTooltip="Messages">message</mat-icon>
+                </a>
+                <a (click)="logout()">
+                    <mat-icon class="icon" matTooltip="LogOut">input</mat-icon>
+                </a>
+                <a [routerLink]="['userprofileinfo']">
+                    <div [matTooltip]="username" mat-card-avatar class="example-header-image"></div>
+                </a>
+            </div>
+        </mat-toolbar-row>
+    </mat-toolbar>
+    <!-- </div> -->
+    <mat-sidenav-container>
+        <mat-sidenav color="primary" #sidenav fxLayout="column" mode="over" opened="false" *ngIf="user">
+            <div fxLayout="column" fxLayoutGap="20px">
+                <a routerLink="/venture">
+                    <mat-icon class="icon" matTooltip="Home">home</mat-icon>
+                </a>
+                <a routerLink="/ownerconnect">
+                    <mat-icon class="icon" matTooltip="Plot Link">link</mat-icon>
+                </a>
+                <a routerLink="members">
+                    <mat-icon class="icon" matTooltip="Members">person</mat-icon>
+                </a>
+                <a routerLink="members">
+                    <mat-icon class="icon" matTooltip="Messages">message</mat-icon>
+                </a>
+                <a (click)="logout()">
+                    <mat-icon class="icon" matTooltip="LogOut">input</mat-icon>
+                </a>
+                <a [routerLink]="['serprofileinfo']">
+                    <div [matTooltip]="username" mat-card-avatar class="example-header-image"></div>
+                </a>
+            </div>
+        </mat-sidenav>
+        <mat-sidenav-content>
+            <main>
+                <router-outlet></router-outlet>
+            </main>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+</div>

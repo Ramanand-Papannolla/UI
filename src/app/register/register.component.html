@@ -1,0 +1,54 @@
+<mat-card>
+    <mat-card-title>Registration</mat-card-title>
+    <!-- <mat-error *ngIf="submitted
+  && form.username.errors" class="invalid-feedback">
+    <span *ngIf="form.username.errors.required" class="mat-form-field-invalid">Username is required</span>
+  </mat-error>
+  <mat-error *ngIf="submitted
+  && form.password.errors" class="invalid-feedback">
+    <span *ngIf="form.password.errors.required" class="mat-form-field-invalid">Password is required</span>
+  </mat-error> -->
+    <mat-card-content>
+        <form [formGroup]="registerForm" (ngSubmit)="register()">
+            <p>
+                <mat-form-field>
+                    <mat-label>User Name</mat-label>
+                    <input matInput placeholder="User name" formControlName="userName" required />
+                </mat-form-field>
+            </p>
+            <p>
+                <mat-form-field>
+                    <mat-label>First Name</mat-label>
+                    <input matInput placeholder="First name" formControlName="firstName" required />
+                </mat-form-field>
+            </p>
+            <p>
+                <mat-form-field>
+                    <mat-label>Last Name</mat-label>
+                    <input matInput placeholder="Last Name" formControlName="lastName" required>
+                </mat-form-field>
+            </p>
+
+            <p>
+                <mat-form-field>
+                    <mat-label>Email</mat-label>
+                    <input matInput placeholder="Email" formControlName="email">
+                </mat-form-field>
+            </p>
+            <p>
+                <mat-form-field>
+                    <mat-label>Password</mat-label>
+                    <input matInput placeholder="Password" formControlName="password" required>
+                </mat-form-field>
+            </p>
+
+            <p *ngIf="error" class="error">
+                {{ error }}
+            </p>
+
+            <mat-card-actions>
+                <button mat-raised-button color="primary">REGISTER</button>
+            </mat-card-actions>
+        </form>
+    </mat-card-content>
+</mat-card>

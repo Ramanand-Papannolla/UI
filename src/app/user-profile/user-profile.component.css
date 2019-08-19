@@ -1,0 +1,22 @@
+/* Meta card */
+
+.example-card {
+  width: 30% auto;
+  height: 30% auto;
+  align-content: center;
+  /* position: relative; */
+}
+
+.example-header-image {
+  /* background-image: url("https://www.brecorder.com/wp-content/uploads/2018/10/shahrukh-khan-1.jpg"); */
+  background-size: cover;
+  height: inherit;
+  width: inherit;
+}
+mat-card {
+  float: left;
+  margin: 10px;
+}
+mat-card-title {
+  font-size: 20px;
+}

@@ -1,0 +1,132 @@
+<mat-card style="height:100%!important">
+  <mat-card-content>
+    <form [formGroup]="platownerconnectForm" (ngSubmit)="save()">
+      <mat-form-field>
+        <mat-select
+          placeholder="Select State"
+          name="stateId"
+          (selectionChange)="getDistrictsByStateId(stateId)"
+          formControlName="stateId"
+          [(value)]="stateId"
+        >
+          <mat-option *ngFor="let state of states" [value]="state.id"
+            >{{ state.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-select
+          placeholder="Select District"
+          name="districtId"
+          formControlName="districtId"
+          (selectionChange)="getMandalsByDistrictId(districtId)"
+          [(value)]="districtId"
+        >
+          <mat-option
+            *ngFor="let district of districts"
+            [value]="district.id"
+            >{{ district.name }}</mat-option
+          >
+        </mat-select>
+      </mat-form-field>
+
+      <br />
+      <mat-form-field>
+        <mat-select
+          placeholder="Select Mandal"
+          name="mandalId"
+          formControlName="mandalId"
+          (selectionChange)="getVillagesByMandalId(mandalId)"
+          [(value)]="mandalId"
+        >
+          <mat-option *ngFor="let mandal of mandals" [value]="mandal.id"
+            >{{ mandal.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-select
+          placeholder="Select Village"
+          name="villageId"
+          formControlName="villageId"
+          [(value)]="villageId"
+          (selectionChange)="getsurveysByVillageId(villageId)"
+        >
+          <mat-option *ngFor="let village of villages" [value]="village.id"
+            >{{ village.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br />
+      <!-- <div class="row" [formGroup]="platownerconnectForm.get('surveyNumber')"> -->
+      <div class="row">
+        <mat-form-field appearance="outline">
+          <div class="align-upload">
+            <input
+              type="text"
+              placeholder="Enter Survey Number"
+              aria-label="Enter Survey Number"
+              matInput
+              formControlName="surveyNumber"
+              [matAutocomplete]="surveyDtls"
+            />
+            <mat-autocomplete
+              #surveyDtls="matAutocomplete"
+              [displayWith]="displaySurveyFn"
+            >
+              <mat-option *ngFor="let survey of surveys" [value]="survey"
+                >{{ survey.surveyNum }}
+              </mat-option>
+            </mat-autocomplete>
+            <input type="file" id="file" (change)="onFileChange($event)" />
+          </div>
+        </mat-form-field>
+      </div>
+      <!-- <div class="row" [formGroup]="platownerconnectForm.get('plotNumber')"> -->
+      <div class="row">
+        <mat-form-field appearance="outline">
+          <div class="align-upload">
+            <input
+              type="text"
+              placeholder="Enter Plot Number"
+              aria-label="Enter Plot Number"
+              matInput
+              formControlName="plotNumber"
+              [matAutocomplete]="plotDtls"
+            />
+            <mat-autocomplete
+              #plotDtls="matAutocomplete"
+              [displayWith]="displayPlotFn"
+            >
+              <mat-option *ngFor="let plot of plots" [value]="plot"
+                >{{ plot.plotNumber }}
+              </mat-option>
+            </mat-autocomplete>
+            <input
+              type="file"
+              id="file"
+              (change)="handleFileInput($event.target.files)"
+            />
+          </div>
+        </mat-form-field>
+      </div>
+
+      <mat-card-actions>
+        <button
+          type="submit"
+          mat-raised-button
+          [disabled]="loading"
+          color="primary"
+        >
+          save
+        </button>
+
+        <button mat-raised-button color="primary" (click)="reset(stateInfo)">
+          Reset
+        </button>
+      </mat-card-actions>
+    </form>
+  </mat-card-content>
+</mat-card>
