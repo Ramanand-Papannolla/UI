@@ -1,0 +1,9 @@
+CREATE SEQUENCE stateIdGenerator start with 1 increment by 1  minvalue 1
+CREATE SEQUENCE districtIdGenerator start with 1 increment by 1  minvalue 1
+CREATE SEQUENCE mandalIdGenerator start with 1 increment by 1  minvalue 1
+CREATE SEQUENCE messageIdGenerator start with 1 increment by 1  minvalue 1
+CREATE SEQUENCE plotIdGenerator start with 1 increment by 1  minvalue 1
+CREATE SEQUENCE roleIdGenerator start with 1 increment by 1  minvalue 1
+CREATE SEQUENCE surveyNumIdGenerator start with 1 increment by 1  minvalue 1
+CREATE SEQUENCE userIdGenerator start with 1 increment by 1  minvalue 1
+CREATE SEQUENCE villageIdGenerator start with 1 increment by 1  minvalue 1
